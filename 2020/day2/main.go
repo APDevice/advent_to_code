@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"./lib"
+	"github.com/APDevice/advent_to_code/2020/day2/lib"
 )
 
 func main() {
