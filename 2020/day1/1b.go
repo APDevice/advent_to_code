@@ -32,11 +32,13 @@ func main() {
 	} else {
 		fmt.Println("File not found")
 	}
-
+	//sort.Ints(nums)
+	jMax := len(nums) - 1
 out:
 	for i := range nums {
-		for j := range nums {
+		for j := jMax; j > -1; j-- {
 			if nums[i]+nums[j] >= 2020 {
+				jMax--
 				continue
 			}
 			rem = 2020 - nums[i] - nums[j]
