@@ -44,7 +44,7 @@ out:
 				fmt.Printf("%v * %v * %v = %v\n", rem, nums[i], nums[j], result)
 				break out
 			} else {
-				set[nums[i]+nums[j]] = void
+				set[nums[j]] = void
 			}
 
 		}
