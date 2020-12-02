@@ -19,8 +19,10 @@ func main() {
 
 	//load variables from text file
 	file, err := ioutil.ReadFile("nums.txt")
+
 	if err == nil {
-		scanner := bufio.NewScanner(strings.NewReader(string(file)))
+		scanner := bufio.NewScanner(
+			strings.NewReader(string(file)))
 		for scanner.Scan() {
 			val, _ := strconv.Atoi(scanner.Text())
 			nums = append(nums, val)
@@ -39,7 +41,7 @@ out:
 			rem = 2020 - nums[i] - nums[j]
 			if _, ok := set[rem]; ok {
 				result = rem * nums[i] * nums[j]
-				fmt.Println(result)
+				fmt.Printf("%v * %v * %v = %v\n", rem, nums[i], nums[j], result)
 				break out
 			} else {
 				set[nums[i]+nums[j]] = void
@@ -51,7 +53,10 @@ out:
 }
 func elapsed(event string) func() {
 	start := time.Now()
+
 	return func() {
-		fmt.Printf("%s took %v\n", event, time.Since(start))
+		fmt.Printf("%s took %v\n",
+			event,
+			time.Since(start))
 	}
 }
