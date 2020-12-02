@@ -26,6 +26,7 @@ func main() {
 		for scanner.Scan() {
 			val, _ := strconv.Atoi(scanner.Text())
 			nums = append(nums, val)
+			set[val] = void
 
 		}
 	} else {
@@ -43,8 +44,6 @@ out:
 				result = rem * nums[i] * nums[j]
 				fmt.Printf("%v * %v * %v = %v\n", rem, nums[i], nums[j], result)
 				break out
-			} else {
-				set[nums[j]] = void
 			}
 
 		}
