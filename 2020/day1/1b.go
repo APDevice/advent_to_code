@@ -10,9 +10,14 @@ import (
 )
 
 func main() {
-	nums := make([]int, 0)
-	set := make(map[int]bool)
+	defer elapsed("Search")() //checks how long the entire process runs and prints out result to console
 
+	nums := make([]int, 0)
+	set := make(map[int]struct{}) //stores third value
+	var void struct{}
+	var result, rem int
+
+	//load variables from text file
 	file, err := ioutil.ReadFile("nums.txt")
 	if err == nil {
 		scanner := bufio.NewScanner(strings.NewReader(string(file)))
@@ -25,23 +30,19 @@ func main() {
 		fmt.Println("File not found")
 	}
 
-	var result int
-
-	defer elapsed("Search")()
-
 out:
 	for i := range nums {
 		for j := range nums {
-			if nums[i]+nums[j] > 2020 {
+			if nums[i]+nums[j] >= 2020 {
 				continue
 			}
-			rem := 2020 - nums[i] - nums[j]
+			rem = 2020 - nums[i] - nums[j]
 			if _, ok := set[rem]; ok {
 				result = rem * nums[i] * nums[j]
 				fmt.Println(result)
 				break out
 			} else {
-				set[nums[i]+nums[j]] = true
+				set[nums[i]+nums[j]] = void
 			}
 
 		}
